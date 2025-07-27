@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Sluit je aan bij de NieuweDuinen Roleplay community en ontdek onze evenementen.">
+    <meta name="description" content="Sluit je aan bij de NieuweDuinen Roleplay community voor epische GTA V avonturen.">
+    <meta name="keywords" content="NieuweDuinen, FiveM, GTA V, roleplay, Nederlands">
     <title>NieuweDuinen Roleplay - Community</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="bg-animation"></div>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
-        <div class="header-bg"></div>
+        <div class="hero-bg"></div>
         <nav>
             <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
             <ul id="nav-menu" aria-hidden="true">
@@ -25,10 +28,12 @@
                 <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
-        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" class="header-logo">
+        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" class="hero-logo">
         <h1>NieuweDuinen Roleplay</h1>
-        <p>Sluit je aan bij onze bruisende community en beleef onvergetelijke momenten!</p>
-        <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="connect-button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">Verbind met de Server</a>
+        <p>Word deel van onze bruisende FiveM-community!</p>
+        <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="connect-button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">
+            <span>Verbind Nu</span>
+        </a>
     </header>
     <main>
         <section id="community">
@@ -38,7 +43,7 @@
                 </svg>
                 Onze Community
             </h2>
-            <p>De NieuweDuinen Roleplay community is een gezellige en actieve groep spelers die samen unieke verhalen creëren in onze FiveM-server. We organiseren regelmatig evenementen zoals autoraces, politieoperaties en sociale bijeenkomsten.</p>
+            <p>De NieuweDuinen Roleplay community is een levendige groep spelers die samenwerken aan onvergetelijke GTA V-verhalen. Van bankovervallen tot sociale evenementen, er is altijd iets te beleven!</p>
             <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Word lid van de community</a>
         </section>
         <section id="community-spotlight">
@@ -49,56 +54,69 @@
                 Community Spotlight
             </h2>
             <div class="connect-server">
-                <p>Sluit je direct aan bij onze server!</p>
-                <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="connect-button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">Verbind Nu</a>
+                <p>Jump direct in de actie!</p>
+                <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="connect-button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">
+                    <span>Verbind met Server</span>
+                </a>
             </div>
             <div class="map-container">
-                <h3>Ontdek NieuweDuinen</h3>
+                <h3>Ontdek Onze Wereld</h3>
                 <svg viewBox="0 0 600 400" role="img" aria-label="Interactieve kaart van NieuweDuinen">
-                    <rect x="0" y="0" width="600" height="400" fill="#1e293b" stroke="#3b82f6" stroke-width="3"/>
-                    <circle class="location" cx="150" cy="100" r="20" fill="#60a5fa" data-popup="politiebureau" tabindex="0" aria-label="Politiebureau"/>
-                    <rect class="location" x="400" y="250" width="30" height="30" fill="#60a5fa" data-popup="racebaan" tabindex="0" aria-label="Racebaan"/>
-                    <circle class="location" cx="300" cy="200" r="20" fill="#60a5fa" data-popup="ziekenhuis" tabindex="0" aria-label="Ziekenhuis"/>
-                    <rect class="location" x="100" y="300" width="30" height="30" fill="#60a5fa" data-popup="haven" tabindex="0" aria-label="Haven"/>
-                    <circle class="location" cx="450" cy="150" r="20" fill="#60a5fa" data-popup="stadscentrum" tabindex="0" aria-label="Stadscentrum"/>
+                    <rect x="0" y="0" width="600" height="400" fill="#1e293b" stroke="#3b82f6" stroke-width="4"/>
+                    <circle class="location pulse" cx="150" cy="100" r="20" fill="#60a5fa" data-popup="politiebureau" tabindex="0" aria-label="Politiebureau"/>
+                    <rect class="location pulse" x="400" y="250" width="30" height="30" fill="#60a5fa" data-popup="racebaan" tabindex="0" aria-label="Racebaan"/>
+                    <circle class="location pulse" cx="300" cy="200" r="20" fill="#60a5fa" data-popup="ziekenhuis" tabindex="0" aria-label="Ziekenhuis"/>
+                    <rect class="location pulse" x="100" y="300" width="30" height="30" fill="#60a5fa" data-popup="haven" tabindex="0" aria-label="Haven"/>
+                    <circle class="location pulse" cx="450" cy="150" r="20" fill="#60a5fa" data-popup="stadscentrum" tabindex="0" aria-label="Stadscentrum"/>
                 </svg>
                 <div class="map-popup" id="politiebureau">
                     <h3>Politiebureau</h3>
-                    <p>Het hart van de ordehandhaving in NieuweDuinen. Solliciteer voor een rol als agent!</p>
+                    <p>Handhaaf de wet of breek hem in het epicentrum van NieuweDuinen!</p>
                 </div>
                 <div class="map-popup" id="racebaan">
                     <h3>Racebaan</h3>
-                    <p>Doe mee aan spannende races en laat je vaardigheden zien!</p>
+                    <p>Test je skills in adrenaline-pompende races!</p>
                 </div>
                 <div class="map-popup" id="ziekenhuis">
                     <h3>Ziekenhuis</h3>
-                    <p>Red levens als arts of bezoek als patiënt in onze medische RP!</p>
+                    <p>Red levens of herstel van je wilde avonturen!</p>
                 </div>
                 <div class="map-popup" id="haven">
                     <h3>Haven</h3>
-                    <p>Handel goederen of start een smokkelavontuur in de haven!</p>
+                    <p>Handel, smokkel, of ontdek de onderwereld!</p>
                 </div>
                 <div class="map-popup" id="stadscentrum">
                     <h3>Stadscentrum</h3>
-                    <p>Ontmoet vrienden en start je eigen bedrijf in het bruisende centrum!</p>
+                    <p>Het bruisende hart van NieuweDuinen, vol kansen!</p>
                 </div>
             </div>
             <div class="event-list">
                 <h3>Aankomende Evenementen</h3>
                 <div class="event-item">
-                    <h3>Autorace</h3>
-                    <p>31 juli 2025, 20:00 - Doe mee aan onze wekelijkse race!</p>
+                    <h3>Grand Prix</h3>
+                    <p>31 juli 2025, 20:00 - Scheur naar de finish!</p>
                 </div>
                 <div class="event-item">
-                    <h3>Politie Open Dag</h3>
-                    <p>5 augustus 2025, 18:00 - Ontdek het leven als agent!</p>
+                    <h3>Politie Operatie</h3>
+                    <p>5 augustus 2025, 18:00 - Sluit je aan bij de jacht!</p>
                 </div>
             </div>
         </section>
     </main>
     <footer>
         <p>&copy; 2025 NieuweDuinen Roleplay - Alle rechten voorbehouden</p>
-        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord</a>
+        <div class="social-links">
+            <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="social-button" aria-label="Join onze Discord">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20.3 4.7A17 17 0 0 0 15.7 3a.3.3 0 0 0-.3.4c.2.6.4 1.2.5 1.8-2 .6-3.9 1.4-5.7 2.5a17 17 0 0 0-5.8-2.3c.2-.6.4-1.2.5-1.8a.3.3 0 0 0-.3-.4A17 17 0 0 0 3.7 4.7c-.3 0-.4.2-.4.4C2.7 9.5 2 14.3 2.6 19c2.3 2.8 8.5 3.6 13.4 3.6h.2a.3.3 0 0 0 .3-.4c-.2-.6-.4-1.2-.5-1.8a.3.3 0 0 0-.3-.2c-1 .4-2 .7-3.1.8a.3.3 0 0 1-.3-.3c-.2-1.2.2-2.4 1-3.2a.3.3 0 0 0 .1-.4c-.7-.8-1.3-1.8-1.7-2.8a.3.3 0 0 1 .1-.4c1.2-.6 2.5-.9 3.8-.9 1.4 0 2.7.3 3.8.9a.3.3 0 0 1 .1.4c-.4 1-1 2-1.7 2.8a.3.3 0 0 0 .1.4c.8.8 1.2 2 1 3.2a.3.3 0 0 1-.3.3c-1.1-.1-2.1-.4-3.1-.8a.3.3 0 0 0-.3.2c-.1.6-.3 1.2-.5 1.8a.3.3 0 0 0 .3.4h.2c4.9 0 11.1-.8 13.4-3.6.6-4.7-.1-9.5-.7-13.9-.1-.2-.3-.3-.4-.3zM8.8 15c-.7 1-2.3 1.3-3.3.3-.9-1-.6-2.6.3-3.3.8-.7 2.3-.6 3.3.3.9 1 .6 2.6-.3 3.3zm6.4 0c-.9 1-2.5 1.3-3.3.3-.9-1-.6-2.6.3-3.3.8-.7 2.3-.6 3.3.3.9 1 .6 2.6-.3 3.3z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/nieuweduinenrp" target="_blank" class="social-button" aria-label="Volg ons op X">
+                <svg viewBox="0 0 24 24">
+                    <path d="M18.2 1.8h3.4l-7.4 8.4 8.7 11.5h-6.8l-4.8-6.3-5.5 6.3H2.4l7.9-9-8.3-9.6h7l4.3 5.7zm-1.2 17.8h1.9L7.6 3.5H5.6l11.4 16.1z"/>
+                </svg>
+            </a>
+        </div>
     </footer>
 
     <script>
@@ -132,7 +150,6 @@
             localStorage.setItem('theme', currentTheme);
         }
 
-        // Apply saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
@@ -154,7 +171,7 @@
             const x = rect.left - svgRect.left + (rect.width / 2);
             const y = rect.top - svgRect.top + rect.height;
             popup.style.left = `${x}px`;
-            popup.style.top = `${y}px`;
+            popup.style.top = `${y + 10}px`;
         }
 
         locations.forEach(location => {
