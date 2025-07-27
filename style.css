@@ -689,4 +689,53 @@ label {
 
     input, textarea {
         padding: clamp(0.5rem, 1.5vw, 0.6rem);
-        font-size: clamp(0.8rem, 2
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+    }
+
+    label {
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+    }
+
+    .carousel-item {
+        min-height: 200px;
+    }
+
+    .carousel-item img {
+        width: clamp(100px, 35vw, 300px);
+    }
+
+    .player-of-month img {
+        width: clamp(80px, 25vw, 150px);
+    }
+
+    .map-container svg {
+        max-height: 200px;
+    }
+
+    .map-popup {
+        max-width: 180px;
+    }
+}
+
+@media (max-width: 1024px) and (orientation: landscape) {
+    header {
+        padding: clamp(2rem, 5vw, 3rem) 0.6rem;
+    }
+
+    header img {
+        width: clamp(100px, 30vw, 200px);
+    }
+
+    nav ul {
+        gap: 0.5rem;
+    }
+
+    nav ul li a {
+        padding: clamp(0.4rem, 1.2vw, 0.6rem) 0.8rem;
+        font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    }
+
+    main {
+        margin-top: clamp(2.5rem, 7vw, 3.5rem);
+    }
+}
