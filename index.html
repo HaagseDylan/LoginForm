@@ -75,7 +75,7 @@
                 <button class="carousel-button next" aria-label="Volgende slide">&#10095;</button>
             </div>
             <div class="discord-status">
-                <p>150 spelers online op onze Discord!</p>
+                <p><span id="discord-status" aria-live="polite">Laden...</span></p>
                 <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Sluit je aan</a>
             </div>
             <div class="player-of-month">
@@ -89,7 +89,10 @@
                 <svg viewBox="0 0 600 400" role="img" aria-label="Interactieve kaart van NieuweDuinen">
                     <rect x="0" y="0" width="600" height="400" fill="#e5e7eb" stroke="#4db2d1" stroke-width="2"/>
                     <circle class="location" cx="150" cy="100" r="20" fill="#60a5fa" data-popup="politiebureau" tabindex="0" aria-label="Politiebureau"/>
-                    <circle class="location" cx="450" cy="300" r="20" fill="#60a5fa" data-popup="racebaan" tabindex="0" aria-label="Racebaan"/>
+                    <rect class="location" x="400" y="250" width="30" height="30" fill="#60a5fa" data-popup="racebaan" tabindex="0" aria-label="Racebaan"/>
+                    <circle class="location" cx="300" cy="200" r="20" fill="#60a5fa" data-popup="ziekenhuis" tabindex="0" aria-label="Ziekenhuis"/>
+                    <rect class="location" x="100" y="300" width="30" height="30" fill="#60a5fa" data-popup="haven" tabindex="0" aria-label="Haven"/>
+                    <circle class="location" cx="450" cy="150" r="20" fill="#60a5fa" data-popup="stadscentrum" tabindex="0" aria-label="Stadscentrum"/>
                 </svg>
                 <div class="map-popup" id="politiebureau">
                     <h3>Politiebureau</h3>
@@ -98,6 +101,18 @@
                 <div class="map-popup" id="racebaan">
                     <h3>Racebaan</h3>
                     <p>Doe mee aan spannende races en laat je vaardigheden zien!</p>
+                </div>
+                <div class="map-popup" id="ziekenhuis">
+                    <h3>Ziekenhuis</h3>
+                    <p>Red levens als arts of bezoek als patiënt in onze medische RP!</p>
+                </div>
+                <div class="map-popup" id="haven">
+                    <h3>Haven</h3>
+                    <p>Handel goederen of start een smokkelavontuur in de haven!</p>
+                </div>
+                <div class="map-popup" id="stadscentrum">
+                    <h3>Stadscentrum</h3>
+                    <p>Ontmoet vrienden en start je eigen bedrijf in het bruisende centrum!</p>
                 </div>
             </div>
             <div class="event-list">
@@ -191,21 +206,57 @@
             popups.forEach(popup => popup.classList.remove('show'));
         }
 
+        function positionPopup(popup, location) {
+            const rect = location.getBoundingClientRect();
+            const svgRect = location.closest('svg').getBoundingClientRect();
+            const x = rect.left - svgRect.left + (rect.width / 2);
+            const y = rect.top - svgRect.top + rect.height;
+            popup.style.left = `${x}px`;
+            popup.style.top = `${y}px`;
+        }
+
         locations.forEach(location => {
             location.addEventListener('click', () => {
                 hideAllPopups();
                 const popupId = location.getAttribute('data-popup');
-                document.getElementById(popupId).classList.add('show');
+                const popup = document.getElementById(popupId);
+                popup.classList.add('show');
+                positionPopup(popup, location);
             });
 
             location.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     hideAllPopups();
                     const popupId = location.getAttribute('data-popup');
-                    document.getElementById(popupId).classList.add('show');
+                    const popup = document.getElementById(popupId);
+                    popup.classList.add('show');
+                    positionPopup(popup, location);
                 }
             });
         });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideAllPopups();
+            }
+        });
+
+        // Lanyard Discord Status
+        const discordStatusElement = document.getElementById('discord-status');
+        const userId = 'JOUW_DISCORD_USER_ID'; // Vervang door je eigen Discord User ID
+        fetch(`https://api.lanyard.rest/v1/users/${userId}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data.discord_status) {
+                    const status = data.data.discord_status === 'online' ? 'Online' : 'Offline';
+                    discordStatusElement.textContent = `Serverstatus: ${status} - ${data.data.kv.members || 'Onbekend aantal'} spelers online`;
+                } else {
+                    discordStatusElement.textContent = 'Kan status niet ophalen';
+                }
+            })
+            .catch(() => {
+                discordStatusElement.textContent = 'Fout bij het ophalen van de status';
+            });
 
         updateCarousel();
     </script>
