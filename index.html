@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Welkom bij NieuweDuinen Roleplay, een levendige FiveM-community voor GTA V.">
     <title>NieuweDuinen Roleplay - Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
-        <video autoplay loop muted playsinline aria-hidden="true">
-            <source src="https://via.placeholder.com/video.mp4" type="video/mp4">
-        </video>
+        <div class="header-bg"></div>
         <nav>
             <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
             <ul id="nav-menu" aria-hidden="true">
@@ -30,10 +25,10 @@
                 <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
-        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo">
+        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" class="header-logo">
         <h1>NieuweDuinen Roleplay</h1>
         <p>Beleef epische avonturen in de bruisende kuststad NieuweDuinen!</p>
-        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord!</a>
+        <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">Verbind met de Server</a>
     </header>
     <main>
         <section id="welcome">
@@ -43,8 +38,8 @@
                 </svg>
                 Welkom bij NieuweDuinen Roleplay
             </h2>
-            <p>Duik in onze levendige FiveM-community en creëer jouw eigen verhaal in de fictieve kuststad NieuweDuinen. Of je nu een politieagent, ondernemer, of avonturier bent, onze server biedt een realistische en gezellige roleplay-ervaring. Sluit je aan via Discord en start vandaag!</p>
-            <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Begin je avontuur</a>
+            <p>Duik in onze levendige FiveM-community en creëer jouw eigen verhaal in de fictieve kuststad NieuweDuinen. Of je nu een politieagent, ondernemer, of avonturier bent, onze server biedt een realistische en gezellige roleplay-ervaring.</p>
+            <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord</a>
         </section>
         <section id="community-spotlight">
             <h2>
@@ -53,41 +48,14 @@
                 </svg>
                 Community Spotlight
             </h2>
-            <div class="carousel-container">
-                <button class="carousel-button prev" aria-label="Vorige slide">&#10094;</button>
-                <div class="carousel">
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/600x300?text=Politieachtervolging" alt="Politieachtervolging in NieuweDuinen">
-                        <p>"Een spannende achtervolging door de straten van NieuweDuinen!" - AgentMike</p>
-                        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join de actie</a>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/600x300?text=Community-Event" alt="Community-evenement in NieuweDuinen">
-                        <p>"De autorace was episch! Geweldige community!" - RacerX</p>
-                        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Doe mee</a>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/600x300?text=Roleplay-Moment" alt="Roleplay-moment in NieuweDuinen">
-                        <p>"Mijn winkelopening was een succes dankzij de community!" - ShopOwner</p>
-                        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Start jouw verhaal</a>
-                    </div>
-                </div>
-                <button class="carousel-button next" aria-label="Volgende slide">&#10095;</button>
-            </div>
-            <div class="discord-status">
-                <p><span id="discord-status" aria-live="polite">Laden...</span></p>
-                <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Sluit je aan</a>
-            </div>
-            <div class="player-of-month">
-                <h3>Speler van de Maand</h3>
-                <img src="https://via.placeholder.com/300x300?text=Speler+Foto" alt="Speler van de Maand: CommunityHero">
-                <p>"CommunityHero organiseerde een onvergetelijke bankoverval-RP die iedereen versteld deed staan!"</p>
-                <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Ontmoet onze community</a>
+            <div class="connect-server">
+                <p>Sluit je direct aan bij onze server!</p>
+                <a href="fivem://connect/play.nieuweduinenrp.nl:30120" class="button" aria-label="Verbind met NieuweDuinen Roleplay FiveM-server">Verbind Nu</a>
             </div>
             <div class="map-container">
                 <h3>Ontdek NieuweDuinen</h3>
                 <svg viewBox="0 0 600 400" role="img" aria-label="Interactieve kaart van NieuweDuinen">
-                    <rect x="0" y="0" width="600" height="400" fill="#e5e7eb" stroke="#4db2d1" stroke-width="2"/>
+                    <rect x="0" y="0" width="600" height="400" fill="#1e293b" stroke="#3b82f6" stroke-width="3"/>
                     <circle class="location" cx="150" cy="100" r="20" fill="#60a5fa" data-popup="politiebureau" tabindex="0" aria-label="Politiebureau"/>
                     <rect class="location" x="400" y="250" width="30" height="30" fill="#60a5fa" data-popup="racebaan" tabindex="0" aria-label="Racebaan"/>
                     <circle class="location" cx="300" cy="200" r="20" fill="#60a5fa" data-popup="ziekenhuis" tabindex="0" aria-label="Ziekenhuis"/>
@@ -130,6 +98,7 @@
     </main>
     <footer>
         <p>&copy; 2025 NieuweDuinen Roleplay - Alle rechten voorbehouden</p>
+        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord</a>
     </footer>
 
     <script>
@@ -165,37 +134,10 @@
 
         // Apply saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light';
+            const savedTheme = localStorage.getItem('theme') || 'dark';
             document.body.setAttribute('data-theme', savedTheme);
             document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
             navMenu.setAttribute('aria-hidden', !navMenu.classList.contains('show'));
-        });
-
-        // Carousel functionality
-        const carousel = document.querySelector('.carousel');
-        const prevButton = document.querySelector('.carousel-button.prev');
-        const nextButton = document.querySelector('.carousel-button.next');
-        const items = document.querySelectorAll('.carousel-item');
-        let currentIndex = 0;
-
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            prevButton.disabled = currentIndex === 0;
-            nextButton.disabled = currentIndex === items.length - 1;
-        }
-
-        prevButton.addEventListener('click', () => {
-            if (currentIndex > 0) {
-                currentIndex--;
-                updateCarousel();
-            }
-        });
-
-        nextButton.addEventListener('click', () => {
-            if (currentIndex < items.length - 1) {
-                currentIndex++;
-                updateCarousel();
-            }
         });
 
         // Map interactivity
@@ -240,25 +182,6 @@
                 hideAllPopups();
             }
         });
-
-        // Lanyard Discord Status
-        const discordStatusElement = document.getElementById('discord-status');
-        const userId = '1399079748113666132'; // Vervang door je eigen Discord User ID
-        fetch(`https://api.lanyard.rest/v1/users/${userId}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.success && data.data.discord_status) {
-                    const status = data.data.discord_status === 'online' ? 'Online' : 'Offline';
-                    discordStatusElement.textContent = `Serverstatus: ${status} - ${data.data.kv.members || 'Onbekend aantal'} spelers online`;
-                } else {
-                    discordStatusElement.textContent = 'Kan status niet ophalen';
-                }
-            })
-            .catch(() => {
-                discordStatusElement.textContent = 'Fout bij het ophalen van de status';
-            });
-
-        updateCarousel();
     </script>
 </body>
 </html>
