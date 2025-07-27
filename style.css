@@ -40,7 +40,7 @@ header {
     padding: clamp(2.5rem, 7vw, 4.5rem) 0.8rem;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    z-index: 1; /* Zorgt dat header boven inhoud blijft */
+    z-index: 1;
 }
 
 header::before {
@@ -50,7 +50,18 @@ header::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://via.placeholder.com/1280x400?text=NieuweDuinen+Hero') no-repeat center/cover;
+    background: none;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+header video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     opacity: 0.25;
     z-index: 0;
 }
@@ -83,11 +94,11 @@ header p {
 nav {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
     backdrop-filter: blur(10px);
-    position: fixed; /* Gebruik fixed in plaats van sticky voor betere mobiele stabiliteit */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 2000; /* Hoge z-index om boven inhoud te blijven */
+    z-index: 2000;
     padding: clamp(0.6rem, 1.5vw, 0.8rem);
     border-bottom: 2px solid var(--accent);
     box-shadow: var(--neon-glow);
@@ -163,7 +174,7 @@ nav ul li a:hover::after, nav ul li a.active::after, nav ul li a:focus::after {
 
 main {
     max-width: 1400px;
-    margin: clamp(4rem, 10vw, 5rem) auto 1.5rem; /* Extra margin-top om nav-overlap te voorkomen */
+    margin: clamp(4rem, 10vw, 5rem) auto 1.5rem;
     padding: 0 clamp(0.8rem, 2.5vw, 1.2rem);
 }
 
@@ -175,7 +186,7 @@ section {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    z-index: 1; /* Zorgt dat secties onder nav blijven */
+    z-index: 1;
 }
 
 h2 {
@@ -282,7 +293,7 @@ footer {
     font-family: 'Orbitron', sans-serif, system-ui;
     font-size: clamp(0.8rem, 2vw, 0.9rem);
     cursor: pointer;
-    z-index: 2100; /* Boven nav */
+    z-index: 2100;
     transition: all 0.2s ease;
     box-shadow: var(--neon-glow);
     min-height: 48px;
@@ -316,7 +327,201 @@ label {
     font-size: clamp(0.85rem, 2.2vw, 0.95rem);
 }
 
-/* Media queries voor mobiele stabiliteit */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    text-align: center;
+    min-height: 300px;
+    background: var(--card-bg);
+}
+
+.carousel-item img {
+    max-width: 100%;
+    width: clamp(200px, 50vw, 600px);
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.carousel-item p {
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    margin-bottom: 1rem;
+    max-width: 600px;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: clamp(0.5rem, 1.5vw, 0.8rem);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    box-shadow: var(--neon-glow);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.carousel-button.prev {
+    left: 0.5rem;
+}
+
+.carousel-button.next {
+    right: 0.5rem;
+}
+
+.carousel-button:hover, .carousel-button:focus {
+    background: #6cc1e0;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.event-list {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.event-item {
+    background: var(--card-bg);
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-item h3 {
+    font-family: 'Orbitron', sans-serif, system-ui;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.event-item p {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+}
+
+.discord-status {
+    background: var(--card-bg);
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.discord-status p {
+    font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+    margin-bottom: 1rem;
+}
+
+.player-of-month {
+    background: var(--card-bg);
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.player-of-month img {
+    max-width: 100%;
+    width: clamp(150px, 40vw, 300px);
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.player-of-month h3 {
+    font-family: 'Orbitron', sans-serif, system-ui;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: 0.5rem;
+}
+
+.player-of-month p {
+    font-size: clamp(0.85rem, 2.2vw, 1rem);
+    max-width: 600px;
+    margin: 0 auto 1rem;
+}
+
+.map-container {
+    margin-top: 1.5rem;
+    max-width: 100%;
+    position: relative;
+}
+
+.map-container svg {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.map-container .location {
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.map-container .location:hover, .map-container .location:focus {
+    fill: var(--accent);
+}
+
+.map-popup {
+    display: none;
+    position: absolute;
+    background: var(--card-bg);
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    max-width: 300px;
+    border: 1px solid var(--accent);
+}
+
+.map-popup.show {
+    display: block;
+}
+
+.map-popup h3 {
+    font-family: 'Orbitron', sans-serif, system-ui;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.map-popup p {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+}
+
+/* Media queries */
 @media (max-width: 1024px) {
     header {
         padding: clamp(2rem, 6vw, 3.5rem) 0.6rem;
@@ -337,11 +542,19 @@ label {
     h2 {
         font-size: clamp(1.5rem, 3.5vw, 2rem);
     }
+
+    .carousel-item img {
+        width: clamp(150px, 45vw, 500px);
+    }
+
+    .player-of-month img {
+        width: clamp(120px, 35vw, 250px);
+    }
 }
 
 @media (max-width: 768px) {
     nav {
-        position: fixed; /* Fixed voor consistente zichtbaarheid */
+        position: fixed;
         top: 0;
         width: 100%;
         padding: clamp(0.4rem, 1vw, 0.6rem);
@@ -360,7 +573,7 @@ label {
         transition: transform 0.3s ease, opacity 0.3s ease;
         transform: translateY(-100%);
         opacity: 0;
-        z-index: 1900; /* Onder nav, boven inhoud */
+        z-index: 1900;
     }
 
     nav ul.show {
@@ -382,7 +595,7 @@ label {
 
     .hamburger {
         display: block;
-        z-index: 2100; /* Boven nav ul */
+        z-index: 2100;
     }
 
     header img {
@@ -404,7 +617,23 @@ label {
     }
 
     main {
-        margin-top: clamp(3rem, 8vw, 4rem); /* Extra ruimte voor nav */
+        margin-top: clamp(3rem, 8vw, 4rem);
+    }
+
+    .carousel-item {
+        min-height: 250px;
+    }
+
+    .carousel-item img {
+        width: clamp(120px, 40vw, 400px);
+    }
+
+    .player-of-month img {
+        width: clamp(100px, 30vw, 200px);
+    }
+
+    .map-container svg {
+        max-height: 300px;
     }
 }
 
@@ -452,6 +681,22 @@ label {
 
     label {
         font-size: clamp(0.8rem, 2vw, 0.9rem);
+    }
+
+    .carousel-item {
+        min-height: 200px;
+    }
+
+    .carousel-item img {
+        width: clamp(100px, 35vw, 300px);
+    }
+
+    .player-of-month img {
+        width: clamp(80px, 25vw, 150px);
+    }
+
+    .map-container svg {
+        max-height: 200px;
     }
 }
 
