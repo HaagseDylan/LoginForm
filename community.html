@@ -14,8 +14,13 @@
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
         <div class="hero-bg"></div>
-        <nav>
-            <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
+        <nav class="nav-container">
+            <div class="nav-bg"></div>
+            <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul id="nav-menu" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="apv.html">APV</a></li>
@@ -127,6 +132,7 @@
 
         hamburger.addEventListener('click', () => {
             const isExpanded = navMenu.classList.toggle('show');
+            hamburger.classList.toggle('open');
             hamburger.setAttribute('aria-expanded', isExpanded);
             navMenu.setAttribute('aria-hidden', !isExpanded);
             document.body.style.overflow = isExpanded ? 'hidden' : '';
@@ -135,6 +141,7 @@
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('show');
+                hamburger.classList.remove('open');
                 hamburger.setAttribute('aria-expanded', 'false');
                 navMenu.setAttribute('aria-hidden', 'true');
                 document.body.style.overflow = '';
