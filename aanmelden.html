@@ -6,380 +6,7 @@
     <meta name="description" content="Vraag een wapenvergunning aan voor NieuweDuinen Roleplay, een levendige FiveM-community voor GTA V.">
     <title>NieuweDuinen Roleplay - Aanmelden</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1e40af;
-            --secondary: #60a5fa;
-            --accent: #4db2d1;
-            --bg: #f5f5f5;
-            --text: #1f2937;
-            --card-bg: #ffffff;
-            --neon-glow: 0 0 8px var(--accent), 0 0 16px rgba(77, 178, 209, 0.5);
-        }
-
-        [data-theme="dark"] {
-            --primary: #3b82f6;
-            --secondary: #93c5fd;
-            --bg: #0f172a;
-            --text: #e5e7eb;
-            --card-bg: #1e293b;
-            --neon-glow: 0 0 10px var(--accent), 0 0 20px rgba(77, 178, 209, 0.7);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 1rem;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1920x400?text=NieuweDuinen+Hero') no-repeat center/cover;
-            opacity: 0.25;
-            z-index: 0;
-            animation: parallax 20s linear infinite;
-        }
-
-        @keyframes parallax {
-            0% { background-position: center 0; }
-            100% { background-position: center -50px; }
-        }
-
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            text-shadow: var(--neon-glow);
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: var(--neon-glow); }
-            50% { text-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin: 1.5rem 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            background: var(--secondary);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-2px);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        nav ul li a:hover::after {
-            width: 50%;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1rem;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            animation: fadeInSection 0.8s ease-out;
-        }
-
-        @keyframes fadeInSection {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            position: relative;
-            margin-bottom: 2rem;
-            text-shadow: var(--neon-glow);
-            animation: slideInHeader 0.8s ease-out;
-        }
-
-        h2::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            width: 5px;
-            height: 50%;
-            background: var(--accent);
-            transform: translateY(-50%);
-            box-shadow: var(--neon-glow);
-        }
-
-        h2 svg {
-            width: 40px;
-            height: 40px;
-            fill: var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover h2 svg {
-            transform: rotate(10deg);
-        }
-
-        @keyframes slideInHeader {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: var(--neon-glow);
-            animation: pulseButton 2s ease-in-out infinite;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #6cc1e0; /* Lichtere tint van #4db2d1 */
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-            z-index: -1;
-        }
-
-        .button:hover::before {
-            transform: scaleX(1);
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8);
-        }
-
-        @keyframes pulseButton {
-            from { transform: scale(1); }
-            to { transform: scale(1.05); }
-        }
-
-        form {
-            display: grid;
-            gap: 1.5rem;
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--neon-glow);
-        }
-
-        label {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            color: var(--primary);
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        input, textarea {
-            padding: 1rem;
-            border: 2px solid var(--primary);
-            border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            transition: all 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: var(--neon-glow);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        #formFooter {
-            margin-top: 1rem;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            color: var(--accent);
-            text-align: center;
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: var(--neon-glow);
-        }
-
-        .theme-toggle:hover {
-            background: #6cc1e0;
-            box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8);
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 3rem 1rem;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                background: var(--primary);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 1rem;
-                animation: slideInNav 0.3s ease;
-            }
-
-            @keyframes slideInNav {
-                from { transform: translateX(-100%); }
-                to { transform: translateX(0); }
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            h2 {
-                font-size: clamp(1.8rem, 4vw, 2.5rem);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
@@ -388,10 +15,14 @@
             <button class="hamburger">☰</button>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="tutorial.html">Tutorial</a></li>
+                <li><a href="apv.html">APV</a></li>
+                <li><a href="wetboek.html">Wetboek</a></li>
                 <li><a href="jobs.html">Banen</a></li>
+                <li><a href="tutorial.html">Tutorial</a></li>
                 <li><a href="aanmelden.html" class="active">Aanmelden</a></li>
+                <li><a href="doneren.html">Doneren</a></li>
                 <li><a href="community.html">Community</a></li>
+                <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
         <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" style="max-width: 500px; margin: 1rem auto;">
@@ -403,23 +34,19 @@
         <section id="aanmelden">
             <h2>
                 <svg viewBox="0 0 24 24">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 16H7v-2h10v2zm0-4H7v-2h10v2zm0-4H7V9h10v2z"/>
+                    <path d="M15 12c0-1.1.9-2 2-2s2 .9 2 2-1.9 2-2 2-2-.9-2-2zm-2-9H3v18h18V9h-8V3zm-2 12H5v-2h6v2zm0-4H5V9h6v2zm0-4H5V5h6v2z"/>
                 </svg>
                 Wapenvergunning Aanvragen
             </h2>
-            <form id="aanmeldForm">
+            <div>
                 <label for="naam">Volledige naam:</label>
                 <input type="text" id="naam" name="naam" required>
-                
                 <label for="personage">Personage naam:</label>
                 <input type="text" id="personage" name="personage" required>
-                
                 <label for="reden">Reden voor aanvraag:</label>
                 <textarea id="reden" name="reden" required></textarea>
-                
-                <button type="submit" class="button">Verstuur</button>
-            </form>
-            <p id="formFooter"></p>
+                <button class="button" onclick="submitForm()">Verstuur</button>
+            </div>
         </section>
     </main>
     <footer>
@@ -434,27 +61,26 @@
             navMenu.classList.toggle('show');
         });
 
-        // Formulier
-        document.getElementById('aanmeldForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const naam = document.getElementById('naam').value;
-            const personage = document.getElementById('personage').value;
-            const reden = document.getElementById('reden').value;
-            
-            if (naam && personage && personage && && reden) {
-                document.getElementById('formFooter').textContent = 'Aanvraag verzonden! Je komt in onze website!';
-                this.reset();
-            } else {
-                document.getElementById('formFooter').textContent = 'Vul alle velden in.';
-            }
-        });
-
         // Dark mode toggle
         function toggleTheme() {
             const body = document.body;
             const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            body.setAttribute('data-theme', currentTheme, currentTheme);
+            body.setAttribute('data-theme', currentTheme);
             document.querySelector('.theme-toggle').textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        }
+
+        // Form submission (placeholder)
+        function submitForm() {
+            const naam = document.getElementById('naam').value;
+            const personage = document.getElementById('personage').value;
+            const reden = document.getElementById('reden').value;
+
+            if (naam && personage && reden) {
+                alert('Aanvraag verzonden! Sluit je aan bij onze Discord voor verdere afhandeling.');
+                // Hier kun je een echte form submission toevoegen, bijv. naar een Google Form
+            } else {
+                alert('Vul alle velden in!');
+            }
         }
     </script>
 </body>

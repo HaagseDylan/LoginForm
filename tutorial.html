@@ -3,334 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leer hoe je begint met NieuweDuinen Roleplay, een FiveM-community voor GTA V.">
+    <meta name="description" content="Leer hoe je begint met NieuweDuinen Roleplay, een levendige FiveM-community voor GTA V.">
     <title>NieuweDuinen Roleplay - Tutorial</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1e40af;
-            --secondary: #60a5fa;
-            --accent: #4db2d1;
-            --bg: #f5f5f5;
-            --text: #1f2937;
-            --card-bg: #ffffff;
-            --neon-glow: 0 0 8px var(--accent), 0 0 16px rgba(77, 178, 209, 0.5);
-        }
-
-        [data-theme="dark"] {
-            --primary: #3b82f6;
-            --secondary: #93c5fd;
-            --bg: #0f172a;
-            --text: #e5e7eb;
-            --card-bg: #1e293b;
-            --neon-glow: 0 0 10px var(--accent), 0 0 20px rgba(77, 178, 209, 0.7);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 1rem;
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://via.placeholder.com/1920x400?text=NieuweDuinen+Hero') no-repeat center/cover;
-            opacity: 0.25;
-            z-index: 0;
-            animation: parallax 20s linear infinite;
-        }
-
-        @keyframes parallax {
-            0% { background-position: center 0; }
-            100% { background-position: center -50px; }
-        }
-
-        header h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-            text-shadow: var(--neon-glow);
-            animation: glowPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { text-shadow: var(--neon-glow); }
-            50% { text-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8); }
-        }
-
-        header p {
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            margin: 1.5rem 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        nav {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 1rem;
-            border-bottom: 2px solid var(--accent);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            background: var(--secondary);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-2px);
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s ease;
-            transform: translateX(-50%);
-        }
-
-        nav ul li a:hover::after {
-            width: 50%;
-        }
-
-        .hamburger {
-            display: none;
-            font-size: 1.8rem;
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-        }
-
-        main {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            background: var(--card-bg);
-            border-radius: 16px;
-            margin-bottom: 3rem;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-            animation: fadeInSection 0.8s ease-out;
-        }
-
-        @keyframes fadeInSection {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 1.5rem;
-            position: relative;
-            margin-bottom: 2rem;
-            text-shadow: var(--neon-glow);
-            animation: slideInHeader 0.8s ease-out;
-        }
-
-        h2::before {
-            content: '';
-            position: absolute;
-            left: -10px;
-            top: 50%;
-            width: 5px;
-            height: 50%;
-            background: var(--accent);
-            transform: translateY(-50%);
-            box-shadow: var(--neon-glow);
-        }
-
-        h2 svg {
-            width: 40px;
-            height: 40px;
-            fill: var(--accent);
-            transition: transform 0.3s ease;
-        }
-
-        section:hover h2 svg {
-            transform: rotate(10deg);
-        }
-
-        @keyframes slideInHeader {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: var(--neon-glow);
-            animation: pulseButton 2s ease-in-out infinite;
-        }
-
-        .button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #6cc1e0; /* Lichtere tint van #4db2d1 */
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-            z-index: -1;
-        }
-
-        .button:hover::before {
-            transform: scaleX(1);
-        }
-
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8);
-        }
-
-        @keyframes pulseButton {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            box-shadow: var(--neon-glow);
-        }
-
-        .theme-toggle:hover {
-            background: #6cc1e0;
-            box-shadow: 0 0 12px var(--accent), 0 0 24px rgba(77, 178, 209, 0.8);
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 3rem 1rem;
-            }
-
-            nav ul {
-                display: none;
-                flex-direction: column;
-                background: var(--primary);
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                padding: 1rem;
-                animation: slideInNav 0.3s ease;
-            }
-
-            @keyframes slideInNav {
-                from { transform: translateX(-100%); }
-                to { transform: translateX(0); }
-            }
-
-            nav ul.show {
-                display: flex;
-            }
-
-            .hamburger {
-                display: block;
-            }
-
-            h2 {
-                font-size: clamp(1.8rem, 4vw, 2.5rem);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
@@ -339,10 +15,14 @@
             <button class="hamburger">☰</button>
             <ul id="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="tutorial.html" class="active">Tutorial</a></li>
+                <li><a href="apv.html">APV</a></li>
+                <li><a href="wetboek.html">Wetboek</a></li>
                 <li><a href="jobs.html">Banen</a></li>
+                <li><a href="tutorial.html" class="active">Tutorial</a></li>
                 <li><a href="aanmelden.html">Aanmelden</a></li>
+                <li><a href="doneren.html">Doneren</a></li>
                 <li><a href="community.html">Community</a></li>
+                <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
         <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" style="max-width: 500px; margin: 1rem auto;">
@@ -354,18 +34,18 @@
         <section id="tutorial">
             <h2>
                 <svg viewBox="0 0 24 24">
-                    <path d="M12 2l-10 5v10h20V7l-10-5zm0 2.83l6 3V15h-2V9h-8v6H6V7.83l6-3z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
                 </svg>
                 Tutorial
             </h2>
             <p>Volg deze stappen om je avontuur in NieuweDuinen te starten:</p>
-            <ol>
-                <li><strong>Maak je personage aan</strong>: Registreer je personage via ons CAD-systeem op <a href="https://cad.nieuweduinen.nl">cad.nieuweduinen.nl</a>.</li>
-                <li><strong>Leer de controls</strong>: Open je telefoon met <strong>F1</strong>. Bekijk alle toetscombinaties in onze Discord onder #keybinds.</li>
+            <ul>
+                <li><strong>Maak je personage aan</strong>: Registreer je personage via ons CAD-systeem op <a href="https://cad.nieuweduinen.nl" target="_blank">cad.nieuweduinen.nl</a>.</li>
+                <li><strong>Leer de controls</strong>: Open je telefoon met F1. Bekijk alle toetscombinaties in onze Discord onder #keybinds.</li>
                 <li><strong>Haal je rijbewijs</strong>: Bezoek het examencentrum (witte koffer op de kaart).</li>
                 <li><strong>Koop een voertuig</strong>: Ga naar een cardealer met je startkapitaal van 50.000.</li>
                 <li><strong>Vind een baan</strong>: Solliciteer via het UWV-kantoor (paarse "i" op de kaart).</li>
-            </ol>
+            </ul>
             <p>Tip: Sluit je aan bij onze Discord voor extra hulp en tips!</p>
             <a href="https://discord.gg/nieuwe-duinen" target="_blank" class="button">Join onze Discord</a>
         </section>
