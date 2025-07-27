@@ -2,18 +2,20 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Steun NieuweDuinen Roleplay met een donatie en help onze server draaiende te houden!">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Steun NieuweDuinen Roleplay met een donatie om onze server draaiende te houden.">
     <title>NieuweDuinen Roleplay - Doneren</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
         <nav>
-            <button class="hamburger">☰</button>
-            <ul id="nav-menu">
+            <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
+            <ul id="nav-menu" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="apv.html">APV</a></li>
                 <li><a href="wetboek.html">Wetboek</a></li>
@@ -25,10 +27,10 @@
                 <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
-        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" style="max-width: 500px; margin: 1rem auto;">
+        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo">
         <h1>NieuweDuinen Roleplay</h1>
-        <p>Beleef epische avonturen in de bruisende kuststad NieuweDuinen!</p>
-        <a href="https://discord.gg/nieuwe-duinen" target="_blank" class="button">Join onze Discord!</a>
+        <p>Steun onze server met een donatie!</p>
+        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord!</a>
     </header>
     <main>
         <section id="doneren">
@@ -38,7 +40,7 @@
                 </svg>
                 Doneren
             </h2>
-            <p>Help NieuweDuinen Roleplay draaiende te houden met een donatie! Jouw steun helpt ons om de server te verbeteren, nieuwe functies toe te voegen en een geweldige ervaring te bieden. Klik hieronder om te doneren.</p>
+            <p>Help ons de server draaiende te houden door een donatie. Elke bijdrage wordt gewaardeerd en helpt ons om nieuwe functies en evenementen toe te voegen!</p>
             <a href="https://example.com/doneren-placeholder" target="_blank" class="button">Doneer nu</a>
         </section>
     </main>
@@ -50,8 +52,22 @@
         // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('#nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
+            const isExpanded = navMenu.classList.toggle('show');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            navMenu.setAttribute('aria-hidden', !isExpanded);
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
         });
 
         // Dark mode toggle
@@ -60,14 +76,15 @@
             const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', currentTheme);
             document.querySelector('.theme-toggle').textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-            localStorage.setItem('theme', currentTheme); // Save theme to localStorage
+            localStorage.setItem('theme', currentTheme);
         }
 
         // Apply saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light if no theme is saved
+            const savedTheme = localStorage.getItem('theme') || 'light';
             document.body.setAttribute('data-theme', savedTheme);
             document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            navMenu.setAttribute('aria-hidden', !navMenu.classList.contains('show'));
         });
     </script>
 </body>

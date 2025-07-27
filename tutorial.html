@@ -2,18 +2,20 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Leer hoe je begint met NieuweDuinen Roleplay, een levendige FiveM-community voor GTA V.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Leer hoe je kunt starten met NieuweDuinen Roleplay op onze FiveM-server.">
     <title>NieuweDuinen Roleplay - Tutorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
         <nav>
-            <button class="hamburger">☰</button>
-            <ul id="nav-menu">
+            <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
+            <ul id="nav-menu" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="apv.html">APV</a></li>
                 <li><a href="wetboek.html">Wetboek</a></li>
@@ -25,10 +27,10 @@
                 <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
-        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" style="max-width: 500px; margin: 1rem auto;">
+        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo">
         <h1>NieuweDuinen Roleplay</h1>
-        <p>Beleef epische avonturen in de bruisende kuststad NieuweDuinen!</p>
-        <a href="https://discord.gg/nieuwe-duinen" target="_blank" class="button">Join onze Discord!</a>
+        <p>Leer hoe je kunt starten met onze FiveM-server!</p>
+        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord!</a>
     </header>
     <main>
         <section id="tutorial">
@@ -38,16 +40,14 @@
                 </svg>
                 Tutorial
             </h2>
-            <p>Volg deze stappen om je avontuur in NieuweDuinen te starten:</p>
-            <ul>
-                <li><strong>Maak je personage aan</strong>: Registreer je personage via ons CAD-systeem op <a href="https://cad.nieuweduinen.nl" target="_blank">cad.nieuweduinen.nl</a>.</li>
-                <li><strong>Leer de controls</strong>: Open je telefoon met F1. Bekijk alle toetscombinaties in onze Discord onder #keybinds.</li>
-                <li><strong>Haal je rijbewijs</strong>: Bezoek het examencentrum (witte koffer op de kaart).</li>
-                <li><strong>Koop een voertuig</strong>: Ga naar een cardealer met je startkapitaal van 50.000.</li>
-                <li><strong>Vind een baan</strong>: Solliciteer via het UWV-kantoor (paarse "i" op de kaart).</li>
-            </ul>
-            <p>Tip: Sluit je aan bij onze Discord voor extra hulp en tips!</p>
-            <a href="https://discord.gg/nieuwe-duinen" target="_blank" class="button">Join onze Discord</a>
+            <p>Volg deze stappen om te beginnen met NieuweDuinen Roleplay:</p>
+            <ol>
+                <li>Download en installeer FiveM vanaf de officiële website.</li>
+                <li>Sluit je aan bij onze Discord-server voor de servergegevens.</li>
+                <li>Lees de regels in onze APV en het Wetboek.</li>
+                <li>Meld je aan via het aanmeldformulier op de website.</li>
+                <li>Start FiveM, zoek onze server, en begin je avontuur!</li>
+            </ol>
         </section>
     </main>
     <footer>
@@ -58,8 +58,22 @@
         // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('#nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
+            const isExpanded = navMenu.classList.toggle('show');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            navMenu.setAttribute('aria-hidden', !isExpanded);
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
         });
 
         // Dark mode toggle
@@ -68,14 +82,15 @@
             const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', currentTheme);
             document.querySelector('.theme-toggle').textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-            localStorage.setItem('theme', currentTheme); // Save theme to localStorage
+            localStorage.setItem('theme', currentTheme);
         }
 
         // Apply saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light if no theme is saved
+            const savedTheme = localStorage.getItem('theme') || 'light';
             document.body.setAttribute('data-theme', savedTheme);
             document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            navMenu.setAttribute('aria-hidden', !navMenu.classList.contains('show'));
         });
     </script>
 </body>

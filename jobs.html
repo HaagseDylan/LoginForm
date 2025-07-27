@@ -2,18 +2,20 @@
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ontdek de beschikbare banen bij NieuweDuinen Roleplay, een levendige FiveM-community voor GTA V.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Ontdek de beschikbare banen bij NieuweDuinen Roleplay en solliciteer vandaag.">
     <title>NieuweDuinen Roleplay - Banen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button class="theme-toggle" onclick="toggleTheme()">Dark Mode</button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Wissel tussen dark en light mode">Dark Mode</button>
     <header>
         <nav>
-            <button class="hamburger">☰</button>
-            <ul id="nav-menu">
+            <button class="hamburger" aria-label="Open navigatiemenu" aria-expanded="false">☰</button>
+            <ul id="nav-menu" aria-hidden="true">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="apv.html">APV</a></li>
                 <li><a href="wetboek.html">Wetboek</a></li>
@@ -25,10 +27,10 @@
                 <li><a href="over-ons.html">Over ons</a></li>
             </ul>
         </nav>
-        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo" style="max-width: 500px; margin: 1rem auto;">
+        <img src="https://i.imgur.com/hpjrgcl.png" alt="NieuweDuinen Logo">
         <h1>NieuweDuinen Roleplay</h1>
-        <p>Beleef epische avonturen in de bruisende kuststad NieuweDuinen!</p>
-        <a href="https://discord.gg/nieuwe-duinen" target="_blank" class="button">Join onze Discord!</a>
+        <p>Ontdek de beschikbare banen en solliciteer vandaag!</p>
+        <a href="https://discord.gg/nieuweduinenrp" target="_blank" class="button">Join onze Discord!</a>
     </header>
     <main>
         <section id="jobs">
@@ -38,29 +40,13 @@
                 </svg>
                 Beschikbare Banen
             </h2>
-            <h3>Politie</h3>
-            <p>Handhaaf de wet en bescherm de inwoners van NieuweDuinen. Als politieagent patrouilleer je door de stad, los je misdaden op en werk je samen met je team om de orde te bewaren.</p>
-            <a href="https://forms.gle/politie-placeholder" target="_blank" class="button">Solliciteer nu</a>
-
-            <h3>Ambulance</h3>
-            <p>Red levens als medisch professional. Reageer op noodgevallen, bied eerste hulp en vervoer patiënten naar het ziekenhuis in NieuweDuinen.</p>
-            <a href="https://forms.gle/ambulance-placeholder" target="_blank" class="button">Solliciteer nu</a>
-
-            <h3>Brandweer</h3>
-            <p>Bestrijd branden, red mensen uit noodsituaties en zorg voor veiligheid in NieuweDuinen. Als brandweerman/vrouw ben je altijd paraat voor actie.</p>
-            <a href="https://forms.gle/brandweer-placeholder" target="_blank" class="button">Solliciteer nu</a>
-
-            <h3>Koninklijke Marechaussee</h3>
-            <p>Bewaak grenzen, luchthavens en belangrijke locaties in NieuweDuinen. Werk aan nationale veiligheid en ondersteun bij speciale operaties.</p>
-            <a href="https://forms.gle/marechaussee-placeholder" target="_blank" class="button">Solliciteer nu</a>
-
-            <h3>Advocatuur</h3>
-            <p>Vertegenwoordig cliënten in de rechtbank, bied juridisch advies en zorg voor gerechtigheid in NieuweDuinen. Een uitdagende rol voor slimme onderhandelaars.</p>
-            <a href="https://forms.gle/advocatuur-placeholder" target="_blank" class="button">Solliciteer nu</a>
-
-            <h3>Staffteam NieuweDuinen</h3>
-            <p>NieuweDuinen is een mooie plek waar mensen samenkomen, wonen of samenwerken. Juist daarom is het belangrijk dat we deze omgeving goed beschermen. Tegen mensen die kwaad willen doen, zoals hackers, kloters (relschoppers), of ruzies die voor onrust zorgen.</p>
-            <a href="https://forms.gle/staffteam-placeholder" target="_blank" class="button">Solliciteer nu</a>
+            <p>Kies een rol die bij je past en solliciteer via de onderstaande links:</p>
+            <ul>
+                <li>Politie: <a href="https://forms.gle/politie-placeholder" target="_blank">Solliciteer</a></li>
+                <li>Ambulance: <a href="https://forms.gle/ambulance-placeholder" target="_blank">Solliciteer</a></li>
+                <li>Monteur: <a href="https://forms.gle/monteur-placeholder" target="_blank">Solliciteer</a></li>
+                <li>Ondernemer: <a href="https://forms.gle/ondernemer-placeholder" target="_blank">Solliciteer</a></li>
+            </ul>
         </section>
     </main>
     <footer>
@@ -71,8 +57,22 @@
         // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('#nav-menu');
+        const navLinks = navMenu.querySelectorAll('a');
+
         hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
+            const isExpanded = navMenu.classList.toggle('show');
+            hamburger.setAttribute('aria-expanded', isExpanded);
+            navMenu.setAttribute('aria-hidden', !isExpanded);
+            document.body.style.overflow = isExpanded ? 'hidden' : '';
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                hamburger.setAttribute('aria-expanded', 'false');
+                navMenu.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            });
         });
 
         // Dark mode toggle
@@ -81,15 +81,16 @@
             const currentTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
             body.setAttribute('data-theme', currentTheme);
             document.querySelector('.theme-toggle').textContent = currentTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
-            localStorage.setItem('theme', currentTheme); // Save theme to localStorage
+            localStorage.setItem('theme', currentTheme);
         }
 
         // Apply saved theme on page load
         document.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('theme') || 'light'; // Default to light if no theme is saved
+            const savedTheme = localStorage.getItem('theme') || 'light';
             document.body.setAttribute('data-theme', savedTheme);
             document.querySelector('.theme-toggle').textContent = savedTheme === 'dark' ? 'Light Mode' : 'Dark Mode';
+            navMenu.setAttribute('aria-hidden', !navMenu.classList.contains('show'));
         });
     </script>
 </body>
-</html>
+</html>   
